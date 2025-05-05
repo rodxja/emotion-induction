@@ -1,0 +1,66 @@
+using UnityEngine;
+using Valve.VR;
+
+public class Grabber : MonoBehaviour
+{
+    public SteamVR_Input_Sources handType; // Left or Right
+    public SteamVR_Action_Boolean grabAction;
+    private GameObject collidingObject;
+    private GameObject objectInHand;
+
+    private void SetCollidingObject(Collider col)
+    {
+        if (collidingObject || !col.GetComponent<Rigidbody>())
+            return;
+
+        collidingObject = col.gameObject;
+    }
+
+    public void OnTriggerEnter(Collider other) => SetCollidingObject(other);
+    public void OnTriggerStay(Collider other) => SetCollidingObject(other);
+    public void OnTriggerExit(Collider other)
+    {
+        if (!collidingObject) return;
+        collidingObject = null;
+    }
+
+    void Update()
+    {
+        //if (grabAction != null && grabAction.GetState(handType))
+        //{
+        //    Debug.Log($"{handType} grip is pressed");
+        //}        //if (grabAction != null && grabAction.GetState(handType))
+        //{
+        //    Debug.Log($"{handType} grip is pressed");
+        //}
+
+        if (grabAction.GetStateDown(handType))
+        {
+            if (collidingObject)
+            {
+                objectInHand = collidingObject;
+                collidingObject = null;
+                var joint = gameObject.AddComponent<FixedJoint>();
+                joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+                Debug.Log($"{handType} grabbed the object");
+            }
+        }
+
+        if (grabAction.GetStateUp(handType))
+        {
+            if (objectInHand)
+            {
+                if (GetComponent<FixedJoint>())
+                {
+                    GetComponent<FixedJoint>().connectedBody = null;
+                    Destroy(GetComponent<FixedJoint>());
+                    Rigidbody rb = objectInHand.GetComponent<Rigidbody>();
+                    rb.linearVelocity = GetComponent<Rigidbody>().linearVelocity;
+                    rb.angularVelocity = GetComponent<Rigidbody>().angularVelocity;
+                }
+
+                objectInHand = null;
+            }
+        }
+    }
+}

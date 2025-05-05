@@ -1,10 +1,9 @@
-using Unity.XR.CoreUtils;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Rendering.HighDefinition;
 
 public enum SecondsAllowedDogs
 {
@@ -46,20 +45,20 @@ public class SceneManagerDogs : MonoBehaviour
     void Awake()
     {
 
-        // deactivate tags until start is set to true
-        DeactivateTags();
+        //// deactivate tags until start is set to true
+        //DeactivateTags();
 
-        // sets the screen in black
-        Blackout();
+        //// sets the screen in black
+        //Blackout();
 
         // Deactivate XROrigin in case the scene is Additive
         if (IsAdittiveScene())
         {
-            XROrigin xrOrigin = FindXROriginInScene();
+            GameObject viveRig = FindViveXRRig();
 
-            if (xrOrigin != null)
+            if (viveRig != null)
             {
-                xrOrigin.gameObject.SetActive(false);
+                viveRig.SetActive(false);
             }
             else
             {
@@ -165,22 +164,19 @@ public class SceneManagerDogs : MonoBehaviour
     }
 
     // FindXROriginInScene find the XROrigin in the scene
-    private XROrigin FindXROriginInScene()
+    private GameObject FindViveXRRig()
     {
         Scene scene = gameObject.scene;
 
-        if (!scene.isLoaded)
-            return null;
+        string tag = "MainCamera";
 
-        // Go through all root objects in the scene
-        GameObject[] rootObjects = scene.GetRootGameObjects();
-
-        foreach (GameObject obj in rootObjects)
+        GameObject[] tmp_targetObjects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in tmp_targetObjects)
         {
-            XROrigin xrOrigin = obj.GetComponentInChildren<XROrigin>(true); // true = include inactive objects
-            if (xrOrigin != null)
+
+            if (obj.scene == scene)
             {
-                return xrOrigin;
+                return obj;
             }
         }
 

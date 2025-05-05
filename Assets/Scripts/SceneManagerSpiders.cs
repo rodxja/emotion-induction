@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Rendering.HighDefinition;
+using System.Diagnostics;
 
 public enum SecondsAllowedSpiders
 {
@@ -55,15 +55,15 @@ public class SceneManagerSpiders : MonoBehaviour
         // Deactivate XROrigin in case the scene is Additive
         if (IsAdittiveScene())
         {
-            XROrigin xrOrigin = FindXROriginInScene();
+            GameObject viveRig = FindViveXRRig();
 
-            if (xrOrigin != null)
+            if (viveRig != null)
             {
-                xrOrigin.gameObject.SetActive(false);
+                viveRig.SetActive(false);
             }
             else
             {
-                Debug.LogWarning("No XR Rig found in scene.");
+                UnityEngine.Debug.LogWarning("No XR Rig found in scene.");
             }
         }
 
@@ -108,6 +108,25 @@ public class SceneManagerSpiders : MonoBehaviour
         }
     }
 
+    private GameObject FindViveXRRig()
+    {
+        Scene scene = gameObject.scene;
+
+        string tag = "MainCamera";
+
+        GameObject[] tmp_targetObjects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in tmp_targetObjects)
+        {
+
+            if (obj.scene == scene)
+            {
+                return obj;
+            }
+        }
+
+        return null; // XR Rig not found
+    }
+
     // isAdittiveScene returns true if the scene is loaded as an Additive Scene
     // or returns false if it is loaded as the Main Scene
     bool IsAdittiveScene()
@@ -116,7 +135,7 @@ public class SceneManagerSpiders : MonoBehaviour
         Scene activeScene = SceneManager.GetActiveScene();
 
 
-        Debug.Log($"myScene.name {myScene.name} - activeScene.name {activeScene.name} !(myScene == activeScene) {!(myScene == activeScene)}");
+        UnityEngine.Debug.Log($"myScene.name {myScene.name} - activeScene.name {activeScene.name} !(myScene == activeScene) {!(myScene == activeScene)}");
 
         return !(myScene == activeScene);
     }
@@ -152,7 +171,7 @@ public class SceneManagerSpiders : MonoBehaviour
     {
         if (targetObjects.Count == 0)
         {
-            Debug.LogError("there are no objects in 'targetObjects'");
+            UnityEngine.Debug.LogError("there are no objects in 'targetObjects'");
         }
 
         foreach (GameObject obj in targetObjects)
@@ -165,11 +184,11 @@ public class SceneManagerSpiders : MonoBehaviour
     {
         if (mode == LoadSceneMode.Additive)
         {
-            Debug.Log($"Scene {scene.name} was loaded additively.");
+            UnityEngine.Debug.Log($"Scene {scene.name} was loaded additively.");
         }
         else
         {
-            Debug.Log($"Scene {scene.name} was loaded normally (Single).");
+            UnityEngine.Debug.Log($"Scene {scene.name} was loaded normally (Single).");
         }
     }
 
