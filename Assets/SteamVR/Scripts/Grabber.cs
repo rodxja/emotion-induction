@@ -7,6 +7,7 @@ public class Grabber : MonoBehaviour
     public SteamVR_Action_Boolean grabAction;
     private GameObject collidingObject;
     private GameObject objectInHand;
+    public SteamVR_Action_Vibration hapticAction;
 
     private void SetCollidingObject(Collider col)
     {
@@ -22,6 +23,9 @@ public class Grabber : MonoBehaviour
     {
         if (!collidingObject) return;
         collidingObject = null;
+
+        // Haptic feedback on touch
+        hapticAction.Execute(0, 0.05f, 100, 0.5f, handType);
     }
 
     void Update()
@@ -42,7 +46,9 @@ public class Grabber : MonoBehaviour
                 collidingObject = null;
                 var joint = gameObject.AddComponent<FixedJoint>();
                 joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
-                Debug.Log($"{handType} grabbed the object");
+
+                // Haptic feedback on grab
+                hapticAction.Execute(0, 0.1f, 200, 0.8f, handType);
             }
         }
 
@@ -62,5 +68,19 @@ public class Grabber : MonoBehaviour
                 objectInHand = null;
             }
         }
+
+        if (objectInHand)
+        {
+            Debug.DrawLine(transform.position, objectInHand.transform.position, Color.red);
+        }
     }
+
+    //void LateUpdate()
+    //{
+    //    if (objectInHand)
+    //    {
+    //        Vector3 pos = objectInHand.transform.position;
+    //        objectInHand.transform.position = new Vector3(pos.x, 0.5f, pos.z); // 0.5f o la altura deseada
+    //    }
+    //}
 }
