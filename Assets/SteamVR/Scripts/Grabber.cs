@@ -17,15 +17,21 @@ public class Grabber : MonoBehaviour
         collidingObject = col.gameObject;
     }
 
-    public void OnTriggerEnter(Collider other) => SetCollidingObject(other);
-    public void OnTriggerStay(Collider other) => SetCollidingObject(other);
-    public void OnTriggerExit(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (!collidingObject) return;
-        collidingObject = null;
+        SetCollidingObject(other);
 
         // Haptic feedback on touch
         hapticAction.Execute(0, 0.05f, 100, 0.5f, handType);
+    }
+    public void OnTriggerStay(Collider other) => SetCollidingObject(other);
+    public void OnTriggerExit(Collider other)
+    {
+        if (!collidingObject)
+        {
+            return;
+        }
+        collidingObject = null;
     }
 
     void Update()

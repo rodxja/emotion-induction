@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2889306565119638632
 Transform:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2367190678151200888
 Transform:
   m_ObjectHideFlags: 0
@@ -777,10 +777,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8199034618411350241}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -968,7 +968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 289eba254e485b047be26c152395f8ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.6010001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 289eba254e485b047be26c152395f8ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1001,6 +1001,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 289eba254e485b047be26c152395f8ce, type: 3}
       propertyPath: m_Name
       value: VR Character IK
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 289eba254e485b047be26c152395f8ce, type: 3}
+      propertyPath: m_TagString
+      value: Body
       objectReference: {fileID: 0}
     - target: {fileID: 5137736268359336346, guid: 289eba254e485b047be26c152395f8ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1330,7 +1334,7 @@ MonoBehaviour:
     ikTarget: {fileID: 4702573854677107909}
     trackingPositionOffset: {x: 0, y: 0, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
-  headBodyPositionOffset: {x: 0, y: -0.54, z: 0}
+  headBodyPositionOffset: {x: 0, y: -0.54, z: -0.05}
   headBodyYawOffset: 0
 --- !u!4 &4653799473143230022 stripped
 Transform:

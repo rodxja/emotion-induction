@@ -55,6 +55,94 @@ namespace Valve.VR
         
         private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
         
+        private static SteamVR_Action_Boolean p_ultimatexr_joystick_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_joystick2_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_trigger_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_trigger2_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_grip_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button1_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button2_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button3_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button4_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_bumper_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_bumper2_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_back_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_menu_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_thumbcapsense_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_indexcapsense_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_middlecapsense_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_ringcapsense_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_littlecapsense_click_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_joystick_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_joystick2_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_trigger_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_trigger2_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_grip_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button1_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button2_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button3_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_button4_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_bumper_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_bumper2_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_back_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_menu_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_thumbcapsense_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_indexcapsense_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_middlecapsense_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_ringcapsense_touch_boolean;
+        
+        private static SteamVR_Action_Boolean p_ultimatexr_littlecapsense_touch_boolean;
+        
+        private static SteamVR_Action_Single p_ultimatexr_grip_vector1;
+        
+        private static SteamVR_Action_Single p_ultimatexr_trigger_vector1;
+        
+        private static SteamVR_Action_Single p_ultimatexr_trigger2_vector1;
+        
+        private static SteamVR_Action_Vector2 p_ultimatexr_joystick_vector2;
+        
+        private static SteamVR_Action_Vector2 p_ultimatexr_joystick2_vector2;
+        
+        private static SteamVR_Action_Skeleton p_ultimatexr_hand_left_skeleton;
+        
+        private static SteamVR_Action_Skeleton p_ultimatexr_hand_right_skeleton;
+        
+        private static SteamVR_Action_Vibration p_ultimatexr_hand_haptics;
+        
         public static SteamVR_Action_Boolean default_InteractUI
         {
             get
@@ -207,6 +295,358 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean ultimatexr_joystick_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_joystick2_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick2_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_trigger_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_trigger2_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger2_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_grip_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_grip_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button1_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button1_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button2_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button2_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button3_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button3_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button4_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button4_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_bumper_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_bumper_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_bumper2_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_bumper2_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_back_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_back_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_menu_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_menu_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_thumbcapsense_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_thumbcapsense_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_indexcapsense_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_indexcapsense_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_middlecapsense_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_middlecapsense_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_ringcapsense_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_ringcapsense_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_littlecapsense_click_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_littlecapsense_click_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_joystick_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_joystick2_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick2_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_trigger_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_trigger2_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger2_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_grip_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_grip_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button1_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button1_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button2_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button2_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button3_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button3_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_button4_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_button4_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_bumper_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_bumper_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_bumper2_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_bumper2_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_back_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_back_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_menu_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_menu_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_thumbcapsense_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_thumbcapsense_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_indexcapsense_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_indexcapsense_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_middlecapsense_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_middlecapsense_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_ringcapsense_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_ringcapsense_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean ultimatexr_littlecapsense_touch_boolean
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_littlecapsense_touch_boolean.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Single ultimatexr_grip_vector1
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_grip_vector1.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single ultimatexr_trigger_vector1
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger_vector1.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single ultimatexr_trigger2_vector1
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_trigger2_vector1.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 ultimatexr_joystick_vector2
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick_vector2.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 ultimatexr_joystick2_vector2
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_joystick2_vector2.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Skeleton ultimatexr_hand_left_skeleton
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_hand_left_skeleton.GetCopy<SteamVR_Action_Skeleton>();
+            }
+        }
+        
+        public static SteamVR_Action_Skeleton ultimatexr_hand_right_skeleton
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_hand_right_skeleton.GetCopy<SteamVR_Action_Skeleton>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration ultimatexr_hand_haptics
+        {
+            get
+            {
+                return SteamVR_Actions.p_ultimatexr_hand_haptics.GetCopy<SteamVR_Action_Vibration>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -228,7 +668,51 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.ultimatexr_joystick_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_click_boolean,
+                    SteamVR_Actions.ultimatexr_grip_click_boolean,
+                    SteamVR_Actions.ultimatexr_button1_click_boolean,
+                    SteamVR_Actions.ultimatexr_button2_click_boolean,
+                    SteamVR_Actions.ultimatexr_button3_click_boolean,
+                    SteamVR_Actions.ultimatexr_button4_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_click_boolean,
+                    SteamVR_Actions.ultimatexr_back_click_boolean,
+                    SteamVR_Actions.ultimatexr_menu_click_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick_touch_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button1_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button3_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button4_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_back_touch_boolean,
+                    SteamVR_Actions.ultimatexr_menu_touch_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_vector1,
+                    SteamVR_Actions.ultimatexr_trigger_vector1,
+                    SteamVR_Actions.ultimatexr_trigger2_vector1,
+                    SteamVR_Actions.ultimatexr_joystick_vector2,
+                    SteamVR_Actions.ultimatexr_joystick2_vector2,
+                    SteamVR_Actions.ultimatexr_hand_left_skeleton,
+                    SteamVR_Actions.ultimatexr_hand_right_skeleton,
+                    SteamVR_Actions.ultimatexr_hand_haptics};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -247,11 +731,56 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.mixedreality_ExternalCamera,
+                    SteamVR_Actions.ultimatexr_joystick_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_click_boolean,
+                    SteamVR_Actions.ultimatexr_grip_click_boolean,
+                    SteamVR_Actions.ultimatexr_button1_click_boolean,
+                    SteamVR_Actions.ultimatexr_button2_click_boolean,
+                    SteamVR_Actions.ultimatexr_button3_click_boolean,
+                    SteamVR_Actions.ultimatexr_button4_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_click_boolean,
+                    SteamVR_Actions.ultimatexr_back_click_boolean,
+                    SteamVR_Actions.ultimatexr_menu_click_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick_touch_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button1_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button3_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button4_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_back_touch_boolean,
+                    SteamVR_Actions.ultimatexr_menu_touch_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_vector1,
+                    SteamVR_Actions.ultimatexr_trigger_vector1,
+                    SteamVR_Actions.ultimatexr_trigger2_vector1,
+                    SteamVR_Actions.ultimatexr_joystick_vector2,
+                    SteamVR_Actions.ultimatexr_joystick2_vector2,
+                    SteamVR_Actions.ultimatexr_hand_left_skeleton,
+                    SteamVR_Actions.ultimatexr_hand_right_skeleton};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.ultimatexr_hand_haptics};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.ultimatexr_hand_haptics};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
                     SteamVR_Actions.default_Pose,
                     SteamVR_Actions.mixedreality_ExternalCamera};
@@ -265,17 +794,60 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.ultimatexr_joystick_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_click_boolean,
+                    SteamVR_Actions.ultimatexr_grip_click_boolean,
+                    SteamVR_Actions.ultimatexr_button1_click_boolean,
+                    SteamVR_Actions.ultimatexr_button2_click_boolean,
+                    SteamVR_Actions.ultimatexr_button3_click_boolean,
+                    SteamVR_Actions.ultimatexr_button4_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_click_boolean,
+                    SteamVR_Actions.ultimatexr_back_click_boolean,
+                    SteamVR_Actions.ultimatexr_menu_click_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick_touch_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button1_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button3_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button4_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_back_touch_boolean,
+                    SteamVR_Actions.ultimatexr_menu_touch_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_touch_boolean};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
-                    SteamVR_Actions.buggy_Throttle};
+                    SteamVR_Actions.buggy_Throttle,
+                    SteamVR_Actions.ultimatexr_grip_vector1,
+                    SteamVR_Actions.ultimatexr_trigger_vector1,
+                    SteamVR_Actions.ultimatexr_trigger2_vector1};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
                     SteamVR_Actions.platformer_Move,
-                    SteamVR_Actions.buggy_Steering};
+                    SteamVR_Actions.buggy_Steering,
+                    SteamVR_Actions.ultimatexr_joystick_vector2,
+                    SteamVR_Actions.ultimatexr_joystick2_vector2};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
                     SteamVR_Actions.default_SkeletonLeftHand,
-                    SteamVR_Actions.default_SkeletonRightHand};
+                    SteamVR_Actions.default_SkeletonRightHand,
+                    SteamVR_Actions.ultimatexr_hand_left_skeleton,
+                    SteamVR_Actions.ultimatexr_hand_right_skeleton};
             Valve.VR.SteamVR_Input.actionsNonPoseNonSkeletonIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -290,7 +862,48 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Steering,
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
-                    SteamVR_Actions.buggy_Reset};
+                    SteamVR_Actions.buggy_Reset,
+                    SteamVR_Actions.ultimatexr_joystick_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_click_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_click_boolean,
+                    SteamVR_Actions.ultimatexr_grip_click_boolean,
+                    SteamVR_Actions.ultimatexr_button1_click_boolean,
+                    SteamVR_Actions.ultimatexr_button2_click_boolean,
+                    SteamVR_Actions.ultimatexr_button3_click_boolean,
+                    SteamVR_Actions.ultimatexr_button4_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_click_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_click_boolean,
+                    SteamVR_Actions.ultimatexr_back_click_boolean,
+                    SteamVR_Actions.ultimatexr_menu_click_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_click_boolean,
+                    SteamVR_Actions.ultimatexr_joystick_touch_boolean,
+                    SteamVR_Actions.ultimatexr_joystick2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger_touch_boolean,
+                    SteamVR_Actions.ultimatexr_trigger2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button1_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button3_touch_boolean,
+                    SteamVR_Actions.ultimatexr_button4_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper_touch_boolean,
+                    SteamVR_Actions.ultimatexr_bumper2_touch_boolean,
+                    SteamVR_Actions.ultimatexr_back_touch_boolean,
+                    SteamVR_Actions.ultimatexr_menu_touch_boolean,
+                    SteamVR_Actions.ultimatexr_thumbcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_indexcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_middlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_ringcapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_littlecapsense_touch_boolean,
+                    SteamVR_Actions.ultimatexr_grip_vector1,
+                    SteamVR_Actions.ultimatexr_trigger_vector1,
+                    SteamVR_Actions.ultimatexr_trigger2_vector1,
+                    SteamVR_Actions.ultimatexr_joystick_vector2,
+                    SteamVR_Actions.ultimatexr_joystick2_vector2};
         }
         
         private static void PreInitActions()
@@ -314,6 +927,50 @@ namespace Valve.VR
             SteamVR_Actions.p_buggy_Brake = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Brake")));
             SteamVR_Actions.p_buggy_Reset = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Reset")));
             SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
+            SteamVR_Actions.p_ultimatexr_joystick_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/joystick_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_joystick2_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/joystick2_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_trigger_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/trigger_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_trigger2_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/trigger2_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_grip_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/grip_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_button1_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button1_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_button2_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button2_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_button3_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button3_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_button4_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button4_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_bumper_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/bumper_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_bumper2_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/bumper2_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_back_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/back_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_menu_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/menu_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_thumbcapsense_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/thumbcapsense_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_indexcapsense_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/indexcapsense_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_middlecapsense_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/middlecapsense_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_ringcapsense_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/ringcapsense_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_littlecapsense_click_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/littlecapsense_click_boolean")));
+            SteamVR_Actions.p_ultimatexr_joystick_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/joystick_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_joystick2_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/joystick2_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_trigger_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/trigger_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_trigger2_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/trigger2_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_grip_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/grip_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_button1_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button1_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_button2_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button2_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_button3_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button3_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_button4_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/button4_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_bumper_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/bumper_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_bumper2_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/bumper2_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_back_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/back_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_menu_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/menu_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_thumbcapsense_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/thumbcapsense_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_indexcapsense_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/indexcapsense_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_middlecapsense_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/middlecapsense_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_ringcapsense_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/ringcapsense_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_littlecapsense_touch_boolean = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/ultimatexr/in/littlecapsense_touch_boolean")));
+            SteamVR_Actions.p_ultimatexr_grip_vector1 = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ultimatexr/in/grip_vector1")));
+            SteamVR_Actions.p_ultimatexr_trigger_vector1 = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ultimatexr/in/trigger_vector1")));
+            SteamVR_Actions.p_ultimatexr_trigger2_vector1 = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/ultimatexr/in/trigger2_vector1")));
+            SteamVR_Actions.p_ultimatexr_joystick_vector2 = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ultimatexr/in/joystick_vector2")));
+            SteamVR_Actions.p_ultimatexr_joystick2_vector2 = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/ultimatexr/in/joystick2_vector2")));
+            SteamVR_Actions.p_ultimatexr_hand_left_skeleton = ((SteamVR_Action_Skeleton)(SteamVR_Action.Create<SteamVR_Action_Skeleton>("/actions/ultimatexr/in/hand_left_skeleton")));
+            SteamVR_Actions.p_ultimatexr_hand_right_skeleton = ((SteamVR_Action_Skeleton)(SteamVR_Action.Create<SteamVR_Action_Skeleton>("/actions/ultimatexr/in/hand_right_skeleton")));
+            SteamVR_Actions.p_ultimatexr_hand_haptics = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/ultimatexr/out/hand_haptics")));
         }
     }
 }

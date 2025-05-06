@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.UI;  // Asegúrate de incluir esta línea
+
 
 namespace Unity.VRTemplate
 {
