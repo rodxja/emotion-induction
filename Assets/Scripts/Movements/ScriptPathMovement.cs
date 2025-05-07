@@ -165,7 +165,7 @@ public class PathFollower : MonoBehaviour
 
             float segmentDistance = Vector3.Distance(pathPoints[i].position, pathPoints[i + 1].position);
             sumDistance += segmentDistance;
-            Debug.Log($"segment({i})\tstart\t{i} -\tend\t{i + 1}\t: segmentDistance\t{segmentDistance}\tsumDistance\t{sumDistance}\ttotalPreviousSegments\t{totalPreviousSegments}");
+            //Debug.Log($"segment({i})\tstart\t{i} -\tend\t{i + 1}\t: segmentDistance\t{segmentDistance}\tsumDistance\t{sumDistance}\ttotalPreviousSegments\t{totalPreviousSegments}");
         }
 
     }
@@ -215,7 +215,7 @@ public class PathFollower : MonoBehaviour
 
         float stepAngle = signedAngle / distanceCurrentToEnd * Time.deltaTime;
 
-        Debug.Log($"signedAngle\t{signedAngle}\tdistanceCurrentToEnd\t{distanceCurrentToEnd}\tstepAngle\t{stepAngle}");
+        //Debug.Log($"signedAngle\t{signedAngle}\tdistanceCurrentToEnd\t{distanceCurrentToEnd}\tstepAngle\t{stepAngle}");
 
         transform.rotation = Quaternion.AngleAxis(stepAngle, rotationAxis) * transform.rotation;
     }

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.XR.Interaction.Toolkit;
+using Unity.XR.CoreUtils;
 
 
 
@@ -19,6 +21,7 @@ public class MySceneManager : MonoBehaviour
     private bool start = false;
     private bool embodiment = false;
     private int seconds = 30;
+    private bool shutDown = false;
 
 
     // targetTag indicats the tag of the gameObjects to deactivate until start is true
@@ -37,7 +40,8 @@ public class MySceneManager : MonoBehaviour
         Body,
         Spider,
         MainCamera,
-        StartMenu
+        StartMenu,
+        XRRig
     }
     void Awake()
     {
@@ -51,11 +55,11 @@ public class MySceneManager : MonoBehaviour
         // Deactivate XROrigin in case the scene is Additive
         if (IsAdittiveScene())
         {
-            GameObject rig = FindXRRig();
+            XROrigin rig = FindXRRig();
 
             if (rig != null)
             {
-                rig.SetActive(false);
+                rig.gameObject.SetActive(false);
             }
             else
             {
@@ -64,13 +68,16 @@ public class MySceneManager : MonoBehaviour
         }
     }
 
-    public void StartsWith(bool embodimentOption, int secondsOption) {
+    public void StartsWith(bool embodimentOption, int secondsOption, bool shutDownOption)
+    {
+        shutDown = shutDownOption;
+
         embodiment = embodimentOption;
 
-        SetSeconds(secondsOption);
+        DeactivateStartMenu();
 
-        InitStimuli();
-    } 
+        InitStimuli(secondsOption);
+    }
 
 
     void Start()
@@ -94,10 +101,11 @@ public class MySceneManager : MonoBehaviour
 
     private void OnButtonClick()
     {
-        InitStimuli();
+        InitStimuli(secondsOptions.value);
     }
 
-    private void InitStimuli() {
+    private void InitStimuli(int secondsOptions)
+    {
         UnityEngine.Debug.Log("El bot�n ha sido presionado");
         start = true;
 
@@ -106,6 +114,9 @@ public class MySceneManager : MonoBehaviour
         {
             DeactivateBody();
         }
+
+        // this is done in case that the person press Start immediatly
+        SetSeconds(secondsOptions);
 
         ResetSpiders();
 
@@ -129,14 +140,11 @@ public class MySceneManager : MonoBehaviour
 
     private void OnDropdownChanged(int value)
     {
-        UnityEngine.Debug.Log($"El dropdown ha cambiado {value} en variable {secondsOptions.value}");
-
-
-
         SetSeconds(value);
     }
 
-    private void SetSeconds(int value) {
+    private void SetSeconds(int value)
+    {
         switch (value)
         {
             case 0:
@@ -146,14 +154,13 @@ public class MySceneManager : MonoBehaviour
                 seconds = 30;
                 break;
             default:
-                seconds = 30;
+                seconds = 5;
                 break;
         }
     }
 
     private void OnToggleChanged(bool value)
     {
-        UnityEngine.Debug.Log($"El toggle ha cambiado {value} en variable {embodimentToggle.isOn}");
         embodiment = value;
     }
     // Opcional: Si el bot�n puede desuscribirse (por ejemplo, cuando se destruye el objeto)
@@ -191,24 +198,18 @@ public class MySceneManager : MonoBehaviour
         }
     }
 
-    private GameObject FindXRRig()
+    private XROrigin FindXRRig()
     {
         UnityEngine.SceneManagement.Scene scene = gameObject.scene;
 
-        string tag = TagsOrNames.MainCamera.ToString();
-
-        GameObject[] tmp_targetObjects = GameObject.FindGameObjectsWithTag(tag);
-        if (tmp_targetObjects.Length == 0)
+        foreach (GameObject rootObj in scene.GetRootGameObjects())
         {
-            UnityEngine.Debug.LogError($"no gameObject was found with the tag '{tag}'");
-            return null;
-        }
-        foreach (GameObject obj in tmp_targetObjects)
-        {
-
-            if (obj.scene == scene)
+            XROrigin rig = rootObj.GetComponentInChildren<XROrigin>(true);
+            if (rig != null)
             {
-                return obj;
+                Debug.Log("Found XR Rig in scene: " + scene.name + " - " + rig.gameObject.name);
+                // Puedes guardar una referencia si quieres usarla
+                return rig;
             }
         }
 
@@ -221,9 +222,6 @@ public class MySceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.Scene myScene = gameObject.scene;
         UnityEngine.SceneManagement.Scene activeScene = SceneManager.GetActiveScene();
-
-
-        UnityEngine.Debug.Log($"myScene.name {myScene.name} - activeScene.name {activeScene.name} !(myScene == activeScene) {!(myScene == activeScene)}");
 
         return !(myScene == activeScene);
     }
@@ -309,8 +307,21 @@ public class MySceneManager : MonoBehaviour
         // Wait for 5 seconds
         yield return new WaitForSeconds((float)seconds);
 
+        // ??? i think these two methods should not be called anymore
+        // because if i am in the scene after n minutes i reloads everything, - pending to test
+        // and if it is from lab, it unloads itself
         DeactivateTags();
         Blackout();
+
+        if (shutDown)
+        {
+            UnloadMyScene();
+        }
+        else
+        {
+            ReloadSceneA();
+        }
+
     }
 
     void Blackout()
@@ -348,7 +359,6 @@ public class MySceneManager : MonoBehaviour
         {
             if (renderer.gameObject.scene == myScene)
             {
-                Debug.Log("Restoring renderer in Scene B");
                 renderer.enabled = true;
             }
         }
@@ -362,4 +372,22 @@ public class MySceneManager : MonoBehaviour
             }
         }
     }
+
+    private void UnloadMyScene()
+    {
+        Scene scene = gameObject.scene; // the scene this GameObject belongs to
+        if (scene.IsValid())
+        {
+            SceneManager.UnloadSceneAsync(scene);
+            Debug.Log("Unloading scene: " + scene.name);
+        }
+    }
+
+
+    void ReloadSceneA()
+    {
+        string currentScene = gameObject.scene.name;
+        SceneManager.LoadScene(currentScene);
+    }
+
 }
