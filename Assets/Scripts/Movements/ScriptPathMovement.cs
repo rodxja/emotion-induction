@@ -11,6 +11,7 @@ public class PathFollower : MonoBehaviour
     {
         corgi,
         cur,
+        none
     }
 
     private bool hasStopped = false;
@@ -19,7 +20,7 @@ public class PathFollower : MonoBehaviour
 
     private Animator animator;
 
-    private string animationWalking02 = "_Walking02";
+    private string animationWalking02 = "Walking02";
     void Start()
     {
 
@@ -52,9 +53,9 @@ public class PathFollower : MonoBehaviour
     {
         switch (dogType)
         {
-            case DogType.cur: return "cur";
-            case DogType.corgi: return "corgi";
-            default: return dogType.ToString();
+            case DogType.cur: return "cur_";
+            case DogType.corgi: return "corgi_";
+            default: return "";
         }
     }
 

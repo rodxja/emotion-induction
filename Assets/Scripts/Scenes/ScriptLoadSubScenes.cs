@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using static MySceneManager;
-using UnityEditor.SearchService;
 using Scene = UnityEngine.SceneManagement.Scene;
 
 public class LoadSubScenes : MonoBehaviour
@@ -25,6 +24,8 @@ public class LoadSubScenes : MonoBehaviour
 
     private Vector3 lastControllerPosition;
 
+    public GameObject XRRig;
+
 
     private bool embodiment = false;
     private int secondsOption = 0;
@@ -34,18 +35,24 @@ public class LoadSubScenes : MonoBehaviour
     private const string labMenuStr = "LabMenu";
 
     private GameObject labMenu;
+    private Vector3 labMenuPosition;
 
     private Scene secundaryScene;
 
     public enum SceneNames
     {
-        PositiveAnimal,
-        NegativeScene_2
+        PositiveAnimal_forLab,
+        NegativeScene_forLab
     }
 
     void Start()
     {
         SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+        if (XRRig)
+        {
+            Debug.LogWarning("there is no XRRig set");
+        }
 
         if (myRenderer)
         {
@@ -189,13 +196,13 @@ public class LoadSubScenes : MonoBehaviour
         switch (value)
         {
             case 0:
-                scene = SceneNames.PositiveAnimal.ToString();
+                scene = SceneNames.PositiveAnimal_forLab.ToString();
                 break;
             case 1:
-                scene = SceneNames.NegativeScene_2.ToString();
+                scene = SceneNames.NegativeScene_forLab.ToString();
                 break;
             default:
-                scene = SceneNames.PositiveAnimal.ToString();
+                scene = SceneNames.PositiveAnimal_forLab.ToString();
                 break;
         }
 
@@ -208,7 +215,7 @@ public class LoadSubScenes : MonoBehaviour
         SetSceneMaterial();
 
         DeactivateLabMenu();
-
+        Debug.Log("hubo click");
         StartCoroutine(LoadSceneAndCall(scene));
     }
 
@@ -263,6 +270,8 @@ public class LoadSubScenes : MonoBehaviour
             return null;
         }
 
+        labMenuPosition = labMenu.transform.position;
+
         return labMenu;
     }
 
@@ -275,6 +284,8 @@ public class LoadSubScenes : MonoBehaviour
         }
 
         labMenu.SetActive(true);
+
+        labMenu.transform.position = labMenuPosition;
     }
 
 
@@ -283,6 +294,7 @@ public class LoadSubScenes : MonoBehaviour
         if (SceneManager.GetSceneByName(scene).isLoaded)
             yield break;
 
+        Debug.Log("Additive");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 
         // Esperar hasta que se cargue completamente
@@ -291,28 +303,50 @@ public class LoadSubScenes : MonoBehaviour
             yield return null;
         }
 
+        Debug.Log("cargo");
+
         // Buscar la escena recién cargada
         secundaryScene = SceneManager.GetSceneByName(scene);
 
-        foreach (GameObject obj in secundaryScene.GetRootGameObjects())
+
+        foreach (GameObject rootObj in secundaryScene.GetRootGameObjects())
         {
-            if (obj.name == "RenderCamera") // Assuming your camera pivot is named "CameraRigPivot"
+            cameraPivot = FindWithTagRecursive(rootObj.transform, "RenderCamera");
+            if (cameraPivot != null)
             {
-                cameraPivot = obj;
+                Debug.Log("Found RenderCamera by tag");
                 break;
             }
         }
 
 
         // Buscar el script SceneManager en esa escena
-        foreach (GameObject obj in secundaryScene.GetRootGameObjects())
+        foreach (GameObject rootObj in secundaryScene.GetRootGameObjects())
         {
-            if (obj.TryGetComponent<MySceneManager>(out var sceneManager))
+            GameObject sceneManager_Obj = FindWithTagRecursive(rootObj.transform, "SceneManager");
+            if (sceneManager_Obj.TryGetComponent<MySceneManager>(out var sceneManager))
             {
+                Debug.Log("encontro sceneManager");
                 sceneManager.StartsWith(embodiment, secondsOption, true); // Llamar a tu método
                 break;
             }
         }
+    }
+
+    // Recursive search function
+    GameObject FindWithTagRecursive(Transform parent, string tag)
+    {
+        if (parent.CompareTag(tag))
+            return parent.gameObject;
+
+        foreach (Transform child in parent)
+        {
+            GameObject result = FindWithTagRecursive(child, tag);
+            if (result != null)
+                return result;
+        }
+
+        return null;
     }
 
 }

@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wiggling
+  m_Name: WigglingTail
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -64,7 +64,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isWalking_2
+    m_ConditionEvent: isWalking02
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isBreathing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2476735315567582879}
@@ -87,7 +90,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sitting_Start
+  m_Name: SittingStart
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -115,9 +118,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isBreathing
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: isSitting
     m_EventTreshold: 0
@@ -149,13 +149,13 @@ AnimatorStateMachine:
     m_Position: {x: 320, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6043549509513618004}
-    m_Position: {x: 360, y: 190, z: 0}
+    m_Position: {x: 320, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7451615703699188247}
-    m_Position: {x: 600, y: 200, z: 0}
+    m_Position: {x: 600, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9185875611581699475}
-    m_Position: {x: 830, y: 210, z: 0}
+    m_Position: {x: 860, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7883625741429459001}
     m_Position: {x: 620, y: 90, z: 0}
@@ -212,7 +212,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walking_1
+  m_Name: Walking01
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -263,7 +263,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isWalking_1
+    m_ConditionEvent: isWalking01
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2476735315567582879}
@@ -286,7 +286,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isBreathing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isSitting
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2476735315567582879}
   m_Solo: 0
@@ -316,13 +322,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isWalking_1
+  - m_Name: isWalking01
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isWalking_2
+  - m_Name: isWalking02
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -365,7 +371,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isBreathing
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isWalking_1
+    m_ConditionEvent: isWalking01
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2434739798188101133}
@@ -393,7 +399,7 @@ AnimatorStateTransition:
     m_ConditionEvent: isBreathing
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isWalking_2
+    m_ConditionEvent: isWalking02
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5447713628912148150}
@@ -416,7 +422,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walking_2
+  m_Name: Walking02
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -468,7 +474,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sitting_Cycle
+  m_Name: SittingCycle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -520,7 +526,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sitting_End
+  m_Name: SittingEnd
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:

@@ -11,6 +11,8 @@ TagManager:
   - Dog
   - Menu
   - XRRig
+  - RenderCamera
+  - SceneManager
   layers:
   - Default
   - TransparentFX

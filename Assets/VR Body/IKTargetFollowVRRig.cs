@@ -25,13 +25,17 @@ public class IKTargetFollowVRRig : MonoBehaviour
     public Vector3 headBodyPositionOffset;
     public float headBodyYawOffset;
 
+    private void Start()
+    {
+        // !!!! THIS WAS AT THE BEGINNING OF LATEUPDATE
+        transform.position = head.ikTarget.position + headBodyPositionOffset;
+        float yaw = head.vrTarget.eulerAngles.y;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.eulerAngles.x, yaw, transform.eulerAngles.z), turnSmoothness);
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = head.ikTarget.position + headBodyPositionOffset;
-        float yaw = head.vrTarget.eulerAngles.y;
-        transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.Euler(transform.eulerAngles.x, yaw, transform.eulerAngles.z),turnSmoothness);
-
         head.Map();
         leftHand.Map();
         rightHand.Map();
