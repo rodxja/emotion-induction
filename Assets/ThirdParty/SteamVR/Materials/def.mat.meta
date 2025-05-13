@@ -13,5 +13,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Materials/def.mat
+  assetPath: Assets/ThirdParty/SteamVR/Materials/def.mat
   uploadId: 638640

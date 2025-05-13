@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Lab.unity
     guid: 6be384a7fb265774e86611c28cceb87c
   - enabled: 0
     path: Assets/Scenes/NegativeScene.unity
     guid: c18b52a72b2a5cd4fb092ba4e9d930ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PositiveAnimal.unity
     guid: af49256d1d57b1740bf52359a0704435
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/NegativeScene_forLab.unity
     guid: e8e377275804d144fb60dea9f420aaa3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PositiveAnimal_forLab.unity
     guid: f97166866ff794c4a9289810efbfcb4a
   m_configObjects:

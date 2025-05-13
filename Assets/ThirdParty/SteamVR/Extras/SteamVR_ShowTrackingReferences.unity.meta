@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Extras/SteamVR_ShowTrackingReferences.unity
+  assetPath: Assets/ThirdParty/SteamVR/Extras/SteamVR_ShowTrackingReferences.unity
   uploadId: 638640

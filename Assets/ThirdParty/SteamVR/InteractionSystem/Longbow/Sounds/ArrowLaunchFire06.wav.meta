@@ -24,5 +24,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Longbow/Sounds/ArrowLaunchFire06.wav
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Longbow/Sounds/ArrowLaunchFire06.wav
   uploadId: 638640

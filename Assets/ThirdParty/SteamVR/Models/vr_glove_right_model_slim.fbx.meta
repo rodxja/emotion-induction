@@ -143,5 +143,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Models/vr_glove_right_model_slim.fbx
+  assetPath: Assets/ThirdParty/SteamVR/Models/vr_glove_right_model_slim.fbx
   uploadId: 638640

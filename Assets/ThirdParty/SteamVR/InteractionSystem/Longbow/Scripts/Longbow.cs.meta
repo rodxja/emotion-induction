@@ -15,5 +15,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Longbow/Scripts/Longbow.cs
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Longbow/Scripts/Longbow.cs
   uploadId: 638640

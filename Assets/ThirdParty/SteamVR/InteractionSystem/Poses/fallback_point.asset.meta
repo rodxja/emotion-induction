@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Poses/fallback_point.asset
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Poses/fallback_point.asset
   uploadId: 638640

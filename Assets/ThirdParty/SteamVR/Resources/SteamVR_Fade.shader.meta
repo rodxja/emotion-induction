@@ -12,5 +12,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Resources/SteamVR_Fade.shader
+  assetPath: Assets/ThirdParty/SteamVR/Resources/SteamVR_Fade.shader
   uploadId: 638640

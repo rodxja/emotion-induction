@@ -88,7 +88,7 @@ public class ScriptSpiderMovement : MonoBehaviour
 
             Scene myScene = gameObject.scene;
 
-            Camera mainCam = FindMainCameraInScene(myScene);
+            GameObject mainCam = FindMainCameraInScene(myScene);
 
             if (mainCam != null)
             {
@@ -138,18 +138,34 @@ public class ScriptSpiderMovement : MonoBehaviour
         animator.speed = animationSpeed;
     }
 
-    private Camera FindMainCameraInScene(Scene scene)
+    GameObject FindWithTagRecursive(Transform parent, string tag)
+    {
+        if (parent.CompareTag(tag))
+            return parent.gameObject;
+
+        foreach (Transform child in parent)
+        {
+            GameObject result = FindWithTagRecursive(child, tag);
+            if (result != null)
+                return result;
+        }
+
+        return null;
+    }
+
+    private GameObject FindMainCameraInScene(Scene scene)
     {
         if (!scene.isLoaded)
             return null;
 
         GameObject[] rootObjects = scene.GetRootGameObjects();
 
-        foreach (GameObject obj in rootObjects)
+        foreach (GameObject rootObj in scene.GetRootGameObjects())
         {
-            Camera cam = obj.GetComponentInChildren<Camera>(true);
+            GameObject cam = FindWithTagRecursive(rootObj.transform, "MainCamera");
             if (cam != null && cam.CompareTag("MainCamera"))
             {
+
                 return cam;
             }
         }

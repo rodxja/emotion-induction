@@ -8,5 +8,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Longbow/Prefabs/Torch.prefab
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Longbow/Prefabs/Torch.prefab
   uploadId: 638640

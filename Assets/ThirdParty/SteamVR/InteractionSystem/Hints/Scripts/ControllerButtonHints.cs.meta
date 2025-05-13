@@ -17,5 +17,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Hints/Scripts/ControllerButtonHints.cs
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Hints/Scripts/ControllerButtonHints.cs
   uploadId: 638640

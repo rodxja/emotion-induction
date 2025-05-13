@@ -66,7 +66,6 @@ public class MySceneManager : MonoBehaviour
                 Debug.LogWarning("No XR Rig found in scene.");
             }
         }
-
     }
 
     public void StartsWith(bool embodimentOption, int secondsOption, bool shutDownOption)

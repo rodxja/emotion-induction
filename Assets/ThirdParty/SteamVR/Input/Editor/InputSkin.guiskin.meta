@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Input/Editor/InputSkin.guiskin
+  assetPath: Assets/ThirdParty/SteamVR/Input/Editor/InputSkin.guiskin
   uploadId: 638640

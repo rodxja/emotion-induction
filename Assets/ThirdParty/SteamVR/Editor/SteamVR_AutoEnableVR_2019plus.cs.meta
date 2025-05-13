@@ -14,5 +14,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/Editor/SteamVR_AutoEnableVR_2019plus.cs
+  assetPath: Assets/ThirdParty/SteamVR/Editor/SteamVR_AutoEnableVR_2019plus.cs
   uploadId: 638640

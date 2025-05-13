@@ -12,5 +12,5 @@ AssetOrigin:
   productId: 32647
   packageName: SteamVR Plugin
   packageVersion: 2.8.0 (sdk 2.0.10)
-  assetPath: Assets/SteamVR/InteractionSystem/Teleport/Shaders/HighlighGlobal.shader
+  assetPath: Assets/ThirdParty/SteamVR/InteractionSystem/Teleport/Shaders/HighlighGlobal.shader
   uploadId: 638640
