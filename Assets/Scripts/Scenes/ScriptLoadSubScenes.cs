@@ -4,18 +4,25 @@ using UnityEngine.UI;
 using System.Collections;
 using static MySceneManager;
 using Scene = UnityEngine.SceneManagement.Scene;
+using System.Collections.Generic;
+using UnityEngine.Video;
+using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.Audio;
 
 public class LoadSubScenes : MonoBehaviour
 {
-    public Toggle embodimentToggle; // Asigna el Toggle desde el Inspector
+    public Toggle mediaToggle; // Asigna el Toggle desde el Inspector
     public TMPro.TMP_Dropdown secondsOptions; // Asigna el Dropdown desde el Inspector
-    public TMPro.TMP_Dropdown scenesOptions; // Asigna el Dropdown desde el Inspector
+    public TMPro.TMP_Dropdown stimuliOptions; // Asigna el Dropdown desde el Inspector
     public Button startButton; // Asigna el bot�n desde el Inspector
 
     public Renderer myRenderer;
 
     public Material materialScene_0;
     public Material materialScene_1;
+    public Material materialScene_2;
+    public Material materialBlack;
+    public Material materialScene_360;
 
     public Transform rightController;     // El controlador derecho XR
     private GameObject cameraPivot;         // La cámara montada fija (su transform)
@@ -39,10 +46,14 @@ public class LoadSubScenes : MonoBehaviour
 
     private Scene secundaryScene;
 
+    private VideoPlayer videoPlayer;
+
     public enum SceneNames
     {
         PositiveAnimal_forLab,
-        NegativeScene_forLab
+        NegativeScene_forLab,
+        Lab_forLab,
+        ThreeSixtyVideo
     }
 
     void Start()
@@ -69,17 +80,23 @@ public class LoadSubScenes : MonoBehaviour
             Debug.LogWarning("there is no materialScene_1 set");
         }
 
+        if (materialScene_2)
+        {
+            Debug.LogWarning("there is no materialScene_2 set");
+        }
+
         if (rightController == null)
         {
             Debug.LogWarning("there is no rightController set");
         }
-        else {
+        else
+        {
             lastControllerPosition = rightController.position;
         }
 
-        if (embodimentToggle != null)
+        if (mediaToggle != null)
         {
-            embodimentToggle.onValueChanged.AddListener(OnToggleChanged);
+            mediaToggle.onValueChanged.AddListener(OnToggleChanged);
         }
 
         if (secondsOptions != null)
@@ -87,9 +104,9 @@ public class LoadSubScenes : MonoBehaviour
             secondsOptions.onValueChanged.AddListener(OnSecondsChanged);
         }
 
-        if (scenesOptions != null)
+        if (stimuliOptions != null)
         {
-            scenesOptions.onValueChanged.AddListener(OnScenesChanged);
+            stimuliOptions.onValueChanged.AddListener(OnScenesChanged);
         }
 
 
@@ -97,6 +114,18 @@ public class LoadSubScenes : MonoBehaviour
         {
             startButton.onClick.AddListener(OnButtonClick);
         }
+
+        SetCGIOptions();
+
+        videoPlayer = gameObject.AddComponent<VideoPlayer>();
+        videoPlayer.loopPointReached += OnVideoFinished;
+    }
+
+    void OnVideoFinished(VideoPlayer vp)
+    {
+        Debug.Log("Video finished playing!");
+        ActivateLabMenu();
+        myRenderer.material = materialBlack;
     }
 
     private void Update()
@@ -104,7 +133,8 @@ public class LoadSubScenes : MonoBehaviour
         MoveCameraByTilt();
     }
 
-    private void MoveCamera() {
+    private void MoveCamera()
+    {
 
         if (rightController == null || cameraPivot == null)
             return;
@@ -126,7 +156,8 @@ public class LoadSubScenes : MonoBehaviour
         // Aplica rotación acumulativa
         cameraPivot.transform.Rotate(pitch, yaw, 0f, Space.Self);
 
-        if (previous != cameraPivot.transform) {
+        if (previous != cameraPivot.transform)
+        {
             Debug.Log("la posición ha cambiado");
         }
 
@@ -179,7 +210,40 @@ public class LoadSubScenes : MonoBehaviour
     // selects embodiment
     private void OnToggleChanged(bool value)
     {
-        embodiment = value;
+        if (value)
+        {
+            SetVideoOptions();
+        }
+        else
+        {
+            SetCGIOptions();
+        }
+    }
+
+    private void SetCGIOptions()
+    {
+        // Add new options
+        List<string> options = new List<string> { "A", "B", "C" };
+        stimuliOptions.ClearOptions();
+        stimuliOptions.AddOptions(options);
+
+        // Set default value
+        stimuliOptions.value = 0;
+        Debug.Log("Options count: " + stimuliOptions.options.Count);
+    }
+
+    private void SetVideoOptions()
+    {
+        // Add new options
+        List<string> options = new List<string> { "1", "2", "3", "4", "5" };
+        stimuliOptions.ClearOptions();
+        stimuliOptions.AddOptions(options);
+
+        // Set default value
+        stimuliOptions.value = 0;
+
+        Debug.Log("Options count: " + stimuliOptions.options.Count);
+
     }
 
     private void OnSecondsChanged(int value)
@@ -201,6 +265,12 @@ public class LoadSubScenes : MonoBehaviour
             case 1:
                 scene = SceneNames.NegativeScene_forLab.ToString();
                 break;
+            case 2:
+                scene = SceneNames.Lab_forLab.ToString();
+                break;
+            case 3:
+                scene = SceneNames.ThreeSixtyVideo.ToString();
+                break;
             default:
                 scene = SceneNames.PositiveAnimal_forLab.ToString();
                 break;
@@ -211,23 +281,114 @@ public class LoadSubScenes : MonoBehaviour
     // this starts and loads the scene
     private void OnButtonClick()
     {
-        SetScene(scenesOptions.value);
-        SetSceneMaterial();
-
-        DeactivateLabMenu();
         Debug.Log("hubo click");
-        StartCoroutine(LoadSceneAndCall(scene));
+        if (mediaToggle.isOn)
+        {
+            // LoadFlatVideo ();
+            Load360Video(); // TODO : pending to add options to select the video to play
+
+        }
+        else
+        {
+            Debug.Log("CGI");
+            SetScene(stimuliOptions.value);
+            SetSceneMaterial(stimuliOptions.value);
+
+            DeactivateLabMenu();
+            StartCoroutine(LoadSceneAndCall(scene));
+        }
     }
 
-    public void SetSceneMaterial ()
+    private void Load360Video()
     {
-        switch (scenesOptions.value)
+        SetScene(3);
+        SetSceneMaterial(3);
+
+        DeactivateLabMenu();
+        StartCoroutine(Load360SceneAndCall(scene));
+    }
+
+    private void LoadFlatVideo()
+    {
+        // Step 1: Create a unique RenderTexture
+        RenderTexture renderTexture = new RenderTexture(1920, 1080, 0);
+
+        // Step 2: Create a new material (Unlit so lighting doesn't affect it)
+        Material screenMaterial = new Material(Shader.Find("Unlit/Texture"));
+        screenMaterial.mainTexture = renderTexture;
+
+        // Step 3: Assign the material to the screen
+        myRenderer.material = screenMaterial;
+
+        // Create or reuse an AudioSource
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        // Reset video player audio configuration
+        videoPlayer.Stop(); // stop before modifying
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoPlayer.SetTargetAudioSource(0, audioSource);
+        videoPlayer.EnableAudioTrack(0, true); // assuming 1 track
+
+        // Optional: Reset time/frame in case
+        videoPlayer.frame = 0;
+
+
+        // Step 4: Add and configure the VideoPlayer
+        VideoClip clip = GetVideoClip();
+        if (clip == null)
+        {
+            Debug.LogWarning("could not load clip");
+            return;
+        }
+        videoPlayer.clip = clip;
+        videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        videoPlayer.targetTexture = renderTexture;
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.None; // Or AudioSource if needed
+        DeactivateLabMenu();
+        videoPlayer.Play();
+    }
+
+    // name of video : "Assets/Videos/{{name}}-{{time}}.mp4"
+    // e.g. : Assets/Videos/spanglerLawn-5seconds.mp4
+    // Assets/Videos/spanglerLawn-5seconds.mp4
+    private VideoClip GetVideoClip()
+    {
+        Dictionary<int, string> name = new Dictionary<int, string>();
+        name.Add(0, "1");
+        name.Add(1, "2");
+        name.Add(2, "3");
+        name.Add(3, "4");
+        name.Add(4, "5");
+
+        Dictionary<int, string> time = new Dictionary<int, string>();
+        time.Add(0, "A");
+        time.Add(1, "B");
+
+        string videoPath = "Videos/" + name[stimuliOptions.value] + "-" + time[secondsOptions.value];
+
+        Debug.Log($"video to load {videoPath}");
+        VideoClip clip = Resources.Load<VideoClip>(videoPath);
+        return clip;
+    }
+
+    public void SetSceneMaterial(int option)
+    {
+        switch (option)
         {
             case 0:
                 myRenderer.material = materialScene_0;
                 break;
             case 1:
                 myRenderer.material = materialScene_1;
+                break;
+            case 2:
+                myRenderer.material = materialScene_2;
+                break;
+            case 3:
+                myRenderer.material = materialScene_360;
                 break;
             default:
                 myRenderer.material = materialScene_0;
@@ -240,19 +401,22 @@ public class LoadSubScenes : MonoBehaviour
     void DeactivateLabMenu()
     {
         // if it is null then i need to get it, otherwise it is loaded on labMenu variable
-        if (labMenu == null) {
+        if (labMenu == null)
+        {
             labMenu = GetLabMenu();
         }
 
         // if it is still null, there should not call SetActive
-        if (labMenu == null) {
+        if (labMenu == null)
+        {
             UnityEngine.Debug.LogError("labMenu is null");
             return;
         }
         labMenu.SetActive(false);
     }
 
-    private GameObject GetLabMenu() {
+    private GameObject GetLabMenu()
+    {
         string tag = TagsOrNames.Menu.ToString();
         string componentName = labMenuStr;
 
@@ -278,7 +442,8 @@ public class LoadSubScenes : MonoBehaviour
 
     void ActivateLabMenu()
     {
-        if (labMenu == null) {
+        if (labMenu == null)
+        {
             UnityEngine.Debug.LogError("labMenu is null");
             return;
         }
@@ -328,6 +493,48 @@ public class LoadSubScenes : MonoBehaviour
             {
                 Debug.Log("encontro sceneManager");
                 sceneManager.StartsWith(embodiment, secondsOption, true); // Llamar a tu método
+                break;
+            }
+        }
+    }
+
+    IEnumerator Load360SceneAndCall(string scene)
+    {
+        if (SceneManager.GetSceneByName(scene).isLoaded)
+            yield break;
+
+        Debug.Log("Additive");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+
+        // Esperar hasta que se cargue completamente
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        Debug.Log("cargo");
+
+        // Buscar la escena recién cargada
+        secundaryScene = SceneManager.GetSceneByName(scene);
+
+
+        foreach (GameObject rootObj in secundaryScene.GetRootGameObjects())
+        {
+            cameraPivot = FindWithTagRecursive(rootObj.transform, "RenderCamera");
+            if (cameraPivot != null)
+            {
+                Debug.Log("Found RenderCamera by tag");
+                break;
+            }
+        }
+
+        foreach (GameObject rootObj in secundaryScene.GetRootGameObjects())
+        {
+            GameObject which_Obj = FindWithTagRecursive(rootObj.transform, "SceneManager");
+            if (which_Obj != null && which_Obj.TryGetComponent<WhichVideoToPlay>(out var whichVideoToPlay))
+            {
+                Debug.Log("encontro sceneManager");
+                whichVideoToPlay.PlayVideo(stimuliOptions.value, secondsOptions.value); // Llamar a tu método
                 break;
             }
         }

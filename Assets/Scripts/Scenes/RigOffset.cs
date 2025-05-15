@@ -22,7 +22,6 @@ public class RigOffset : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"current postion : {Rig.transform.position} anchor {Anchor.transform.position}");
-        Debug.Log($"local postion : {Rig.transform.localPosition} anchor {Anchor.transform.localPosition}");
+
     }
 }

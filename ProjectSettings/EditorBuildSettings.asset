@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
-  - enabled: 1
-    path: Assets/Scenes/Lab.unity
+  - enabled: 0
+    path: Assets/Scenes/VRLab.unity
     guid: 6be384a7fb265774e86611c28cceb87c
   - enabled: 0
     path: Assets/Scenes/NegativeScene.unity
@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PositiveAnimal_forLab.unity
     guid: f97166866ff794c4a9289810efbfcb4a
+  - enabled: 0
+    path: Assets/Scenes/Lab.unity
+    guid: c4148a547be6ed247b99259b11dd2693
+  - enabled: 1
+    path: Assets/Scenes/Lab_forLab.unity
+    guid: e74ea8a7af81fd741a7daa6e29fa2a93
+  - enabled: 1
+    path: Assets/Scenes/ThreeSixtyVideo.unity
+    guid: 37589eefe268ecb4b82b1d8825ae64b6
+  - enabled: 1
+    path: Assets/Scenes/VRLab_test360.unity
+    guid: d41fadaf24381b646a413e6b1c96e6d8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: c017ff5c0f43bb646905a3cb29776a6f, type: 2}
