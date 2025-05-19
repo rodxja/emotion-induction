@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
+// XRDetection detects whether a HMD is connected
+// This in order to activate "xrRig" that allows the use of the HMD
+// or activate "desktopRig" that allows the use of the scene with mouse control
 public class XRDetection : MonoBehaviour
 {
     public GameObject xrRig;
@@ -14,32 +17,49 @@ public class XRDetection : MonoBehaviour
 
     void Start()
     {
+        // it uses a coroutine because the HMD sometimes is not detected at the begining of the Start execution
         StartCoroutine(CheckXRReady());
     }
 
+
+    // (De)activate the rig necessary and its input module
     System.Collections.IEnumerator CheckXRReady()
     {
-        // Espera un frame para asegurarte que los subsistemas están cargados
+        // Wait a frame to be sure that systems are loaded
         yield return null;
 
         if (IsHMDConnected())
         {
             xrRig.SetActive(true);
-            desktopRig.SetActive(false);
             xrInputModule.enabled = true;
+
+            desktopRig.SetActive(false);
             desktopInputModule.enabled = false;
-            Debug.Log("HMD detected. XR Rig enabled.");
         }
         else
         {
             xrRig.SetActive(false);
-            desktopRig.SetActive(true);
             xrInputModule.enabled = false;
+
+            desktopRig.SetActive(true);
             desktopInputModule.enabled = true;
-            Debug.Log("No HMD detected. Desktop Rig enabled.");
         }
     }
-    bool IsHMDConnected()
+
+    public GameObject GetActiveRig()
+    {
+        if (IsHMDConnected())
+        {
+            return xrRig;
+        }
+        else
+        {
+            return desktopRig;
+        }
+    }
+
+    // Checks whether the HMD is connected
+    public bool IsHMDConnected()
     {
         List<XRDisplaySubsystem> displaySubsystems = new List<XRDisplaySubsystem>();
         SubsystemManager.GetSubsystems(displaySubsystems);

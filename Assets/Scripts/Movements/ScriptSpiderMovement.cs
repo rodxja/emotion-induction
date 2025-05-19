@@ -80,6 +80,19 @@ public class ScriptSpiderMovement : MonoBehaviour
         return lr;
     }
 
+    public static void MoveUnderDifferentParent(Transform from, Transform to)
+    {
+        Transform toParent = to.parent;
+
+        Vector3 targetPos = to.position;                  // world
+        Quaternion targetRot = to.rotation;               // world
+
+        Transform fromParent = from.parent;
+        from.localPosition = fromParent.InverseTransformPoint(targetPos);
+        from.localRotation = Quaternion.Inverse(fromParent.rotation) * targetRot;
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

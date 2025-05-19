@@ -48,6 +48,8 @@ public class LoadSubScenes : MonoBehaviour
 
     private VideoPlayer videoPlayer;
 
+    private Quaternion originalRotation;
+
     public enum SceneNames
     {
         PositiveAnimal_forLab,
@@ -130,7 +132,7 @@ public class LoadSubScenes : MonoBehaviour
 
     private void Update()
     {
-        MoveCameraByTilt();
+        MoveCameraByTiltNew();
     }
 
     private void MoveCamera()
@@ -164,7 +166,7 @@ public class LoadSubScenes : MonoBehaviour
         lastControllerPosition = currentPos;
     }
 
-    private void MoveCameraByTilt()
+    private void MoveCameraByTilt() // this was the previous working
     {
         if (rightController == null || cameraPivot == null)
             return;
@@ -187,6 +189,31 @@ public class LoadSubScenes : MonoBehaviour
         cameraPivot.transform.localRotation = Quaternion.Euler(adjustedPitch, adjustedYaw, 0f);
     }
 
+    private void MoveCameraByTiltNew()
+    {
+        if (rightController == null || cameraPivot == null)
+            return;
+
+        // Obtenemos la rotación actual del control
+        Quaternion controllerRotation = rightController.rotation;
+
+        // Convertimos la rotación a Euler para trabajar con pitch y yaw
+        Vector3 euler = controllerRotation.eulerAngles;
+
+        // Centramos los ángulos para que oscilen alrededor de 0
+        float pitch = NormalizeAngle(euler.x);
+        float yaw = NormalizeAngle(euler.y);
+
+        // Aplicamos sensibilidad
+        float adjustedPitch = pitch * sensitivityY;
+        float adjustedYaw = yaw * sensitivityZ;
+
+        // Creamos una rotación de compensación a partir del movimiento del control
+        Quaternion tiltOffset = Quaternion.Euler(adjustedPitch, adjustedYaw, 0f);
+
+        // Aplicamos la rotación relativa a la original
+        cameraPivot.transform.localRotation = originalRotation * tiltOffset;
+    }
 
     private float NormalizeAngle(float angle)
     {
@@ -479,6 +506,7 @@ public class LoadSubScenes : MonoBehaviour
             cameraPivot = FindWithTagRecursive(rootObj.transform, "RenderCamera");
             if (cameraPivot != null)
             {
+                originalRotation = cameraPivot.transform.localRotation;
                 Debug.Log("Found RenderCamera by tag");
                 break;
             }
@@ -523,6 +551,7 @@ public class LoadSubScenes : MonoBehaviour
             cameraPivot = FindWithTagRecursive(rootObj.transform, "RenderCamera");
             if (cameraPivot != null)
             {
+                originalRotation = cameraPivot.transform.localRotation;
                 Debug.Log("Found RenderCamera by tag");
                 break;
             }

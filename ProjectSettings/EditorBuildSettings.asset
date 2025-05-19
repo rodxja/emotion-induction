@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Launcher.unity
+    guid: ec390994639d46d42b8e69b404236b3c
+  - enabled: 0
+    path: Assets/Scenes/VRLab_test360.unity
+    guid: d41fadaf24381b646a413e6b1c96e6d8
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
@@ -32,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ThreeSixtyVideo.unity
     guid: 37589eefe268ecb4b82b1d8825ae64b6
-  - enabled: 1
-    path: Assets/Scenes/VRLab_test360.unity
-    guid: d41fadaf24381b646a413e6b1c96e6d8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: c017ff5c0f43bb646905a3cb29776a6f, type: 2}

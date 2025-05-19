@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.XR.CoreUtils;
+using System.Linq;
 
 
 
@@ -129,14 +130,44 @@ public class MySceneManager : MonoBehaviour
         // sets gameObject to initial positiond
         if (seconds == 5)
         {
+            string tag = "MainCamera";
+            GameObject[] tmp_targetObjects = GameObject.FindGameObjectsWithTag(tag).Where(go => go.activeInHierarchy).ToArray();
+
+            if (tmp_targetObjects.Length != 1)
+            {
+                UnityEngine.Debug.LogError($"no active gameObject was found with the tag '{tag}'");
+                return;
+            }
+            GameObject mainCamera = tmp_targetObjects[0];
+
             GameObject[] spiders = Array.FindAll<GameObject>(targetObjects.ToArray(), x => x.CompareTag(TagsOrNames.Spider.ToString()));
             foreach (GameObject spider in spiders)
             {
-                spider.transform.position = new Vector3(0, spider.transform.position.y, 0);
+                //MoveAXYtoB(spider.transform, mainCamera.transform);
+
             }
         }
     }
 
+
+    void MoveAXYtoB(Transform A, Transform B)
+    {
+        Transform aParent = A.parent;   // A’s coordinate frame
+
+        // --- 1. get B’s position in world space ------------
+        Vector3 bWorld = B.position;
+
+        // --- 2. convert that world point into A-parent space
+        Vector3 bInAParent = aParent.InverseTransformPoint(bWorld);
+
+        // --- 3. keep A’s original z, but copy the x & y ----
+        Vector3 newLocal = A.localPosition;   // start with the current local pos
+        newLocal.x = bInAParent.x;
+        newLocal.y = bInAParent.y;
+
+        // --- 4. apply --------------------------------------
+        A.localPosition = newLocal;
+    }
 
     private void OnDropdownChanged(int value)
     {
